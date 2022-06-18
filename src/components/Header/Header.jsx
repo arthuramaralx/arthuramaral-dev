@@ -1,7 +1,14 @@
-import { Flex, Heading, Spacer, Text, Image,  } from '@chakra-ui/react';
-import {Link} from 'react-scroll'
+import {
+  Flex,
+  Heading,
+  Spacer,
+  Text,
+} from '@chakra-ui/react';
+import { Link } from 'react-scroll';
+import { motion } from 'framer-motion';
 
 const Header = () => {
+  const MotionFlex = motion(Flex);
   return (
     <Flex
       as="header"
@@ -11,28 +18,36 @@ const Header = () => {
       bgColor="rgba(11, 11, 13, 0.9)"
       display={['none', 'none', 'flex', 'flex']}
       width="100%"
-      position="fixed" 
+      position="fixed"
       zIndex="1"
     >
-      <Flex flexDir="column" pointerEvents="none"> 
-        <Heading
-          paddingTop="6px"
-          paddingLeft="px"
-          color="#e9dfcc"
-          fontSize="1.5em"
-          fontFamily="Roboto Mono"
+      <Flex flexDir="column" cursor="pointer">
+        <Link
+          to="presentation"
+          spy={true}
+          smooth={true}
+          offset={-100}
+          duration={500}
         >
-          &lt;Art/&gt;
-        </Heading>
-        <Text
-          color="#e9dfcc"
-          paddingLeft="13px"
-          fontFamily="Poppins"
-          fontWeight="500"
-          fontSize="0.7em"
-        >
-          Desenvolvimento Web
-        </Text>
+          <Heading
+            paddingTop="6px"
+            paddingLeft="26px"
+            color="#e9dfcc"
+            fontSize="1.5em"
+            fontFamily="Roboto Mono"
+          >
+            &lt;Art/&gt;
+          </Heading>
+          <Text
+            color="#e9dfcc"
+            paddingLeft="13px"
+            fontFamily="Poppins"
+            fontWeight="500"
+            fontSize="0.7em"
+          >
+            Desenvolvimento Web
+          </Text>
+        </Link>
       </Flex>
       <Spacer></Spacer>
       <Flex
@@ -42,13 +57,106 @@ const Header = () => {
         color="#e9dfcc"
         fontFamily="Poppins"
       >
-        <Link to='presentation' spy={true} smooth={true} offset={-100} duration={500}>Home</Link>
-        <Link to='aboutme' spy={true} smooth={true} offset={-60} duration={500}>Sobre</Link>
-        <Link>Tecnologias</Link>
-        <Link>Portifólio</Link>
-        <Link>Contato</Link>
+        <MotionFlex
+          active="black"
+          cursor="pointer"
+
+          whileHover={{
+            scale: 1.1,
+            textShadow: '0px 0px 6px rgb(255, 255, 255)',
+          }}
+        >
+          <Link
+            to="presentation"
+            spy={true}
+            smooth={true}
+            offset={-100}
+            duration={500}
+          >
+            <Text color="#e9dfcc" _peerHover="">
+              Home
+            </Text>
+          </Link>
+        </MotionFlex>
+        <MotionFlex
+          active="black"
+          cursor="pointer"
+          whileHover={{
+            scale: 1.1,
+            textShadow: '0px 0px 6px rgb(255, 255, 255)',
+          }}
+        >
+          <Link
+            to="aboutme"
+            spy={true}
+            smooth={true}
+            offset={-60}
+            duration={500}
+          >
+            <Text color="#e9dfcc" _peerHover="">
+              Sobre
+            </Text>
+          </Link>
+        </MotionFlex>
+
+        <MotionFlex
+          cursor="pointer"
+          whileHover={{
+            scale: 1.1,
+            textShadow: '0px 0px 6px rgb(255, 255, 255)',
+          }}
+        >
+          <Link
+            to="tecnologies"
+            spy={true}
+            smooth={true}
+            offset={-60}
+            duration={500}
+          >
+            <Text color="#e9dfcc">Tecnologias</Text>
+          </Link>
+        </MotionFlex>
+
+        <MotionFlex
+          cursor="pointer"
+          whileHover={{
+            scale: 1.1,
+            textShadow: '0px 0px 6px rgb(255, 255, 255)',
+          }}
+        >
+          <Link
+            to="portfolio"
+            spy={true}
+            smooth={true}
+            offset={-60}
+            duration={500}
+          >
+            <Text color="#e9dfcc" _peerHover="">
+              Portfólio
+            </Text>
+          </Link>
+        </MotionFlex>
+
+        <MotionFlex
+          cursor="pointer"
+          whileHover={{
+            scale: 1.1,
+            textShadow: '0px 0px 6px rgb(255, 255, 255)',
+          }}
+        >
+          <Link
+            to="contact"
+            spy={true}
+            smooth={true}
+            offset={-60}
+            duration={500}
+          >
+            <Text color="#e9dfcc" _peerHover="">
+              Contato
+            </Text>
+          </Link>
+        </MotionFlex>
       </Flex>
-      {/* <Image src={myPicture} borderRadius="50px" padding="3px" height="60px"></Image> */}
     </Flex>
   );
 };

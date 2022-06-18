@@ -1,27 +1,26 @@
 import {
   Flex,
-  Text,
   Heading,
   Center,
-  Spacer,
   Button,
-  transition,
   Image,
 } from '@chakra-ui/react';
-import {Link} from 'react-scroll'
-import estacao from '../../assets/doca.jpg';
+import { Link } from 'react-scroll';
 import coding from '../../assets/coding.jpg';
 import { FaChevronCircleDown } from 'react-icons/fa';
-import logo from '../../assets/myVector.png'
+import logo from '../../assets/myVector.png';
+import { motion } from 'framer-motion';
 
 const Presentation = () => {
+  const MotionFlex = motion(Flex);
+  const MotionButton = motion(Button);
+
   return (
     <Flex
-      id='presentation'
+      id="presentation"
       bgImage={coding}
       bgSize="cover"
       backdropFilter="auto"
-      backdropBlur="2px"
       bgColor="black"
       bgPos={['-200px 0px', '0px 0px', '0px -0px', '0px -0px']}
       bgRepeat="no-repeat"
@@ -29,72 +28,87 @@ const Presentation = () => {
       width="100%"
       height="100vh"
       minH="580px"
-      boxShadow="inset 0 0 0 1000px rgba(0,0,0,.6);"
+      boxShadow="inset 0 0 0 50vh rgba(0,0,0,.6);"
     >
       <Flex
         flexDir="column"
         backdropFilter="auto"
-        backdropBlur="3px"
+        backdropBlur="2px"
         width="100%"
       >
-        <Center CenterDir="column" paddingTop="100px">
-            
+        <Center flexDir="column" paddingTop="100px">
+          <Flex
+            flexDir="Column"
+            width="100%"
+            position="fixed"
+            paddingTop="70vh"
+          >
+            <MotionFlex
+              opacity="0.1"
+              animate={{
 
-          <Flex flexDir="Column"  width="100%" position="fixed" paddingTop="70vh">
-            
-          <Flex flexDir="row" justify="space-around" >
-            
-            <Flex flexDir="column"  paddingTop="120px">
-
-            
-            <Heading
-              color="#e9dfcc"
-              paddingBottom="10px"
-              fontSize="4em"
-              textOverflow=""
-              fontFamily="Roboto mono"
+                opacity: [0.0, 1.0],
+                scale: 1.0,
+                transition: {
+                  duration: 0.6,
+                },
+              }}
+              width="90%"
+              flexDir="row"
+              justify="space-around"     
             >
-              Arthur Amaral
-            </Heading>
-
-            <Heading color="#e9dfcc" fontFamily="Roboto mono">
-              Desenvolvedor Front-end
-            </Heading>
-            </Flex>
+              <Flex flexDir="column" paddingTop="120px" paddingLeft={["30px", "40px"]}>
             
-            <Flex  >
+                <Heading
+                  color="#e9dfcc"
+                  paddingBottom="10px"
+                  fontSize="4em"
+                  fontFamily="Roboto mono"
+                >
+                  Arthur Amaral
+                </Heading>
 
-            <Image src={logo
-            } display={["none", "none", "flex",  "flex"]} 
-            height="400px"
-             borderRadius="200px"
-             paddingTop="30px" >
+                <Heading
+                  color="#e9dfcc"
+                  fontFamily="Roboto mono"
+                  fontSize="2em"
+                  paddingLeft="2px"
+                >
+                  Desenvolvedor Front-end
+                </Heading>
+              </Flex>
 
-            </Image>
-            </Flex>
-        </Flex>
-   {/* button v */}
-            <Flex  
-              height={['50px']}
-              alignSelf="center"
-            >
-                
-
- 
-
-              <Button
-              paddingLeft="20px"
-              paddingTop={["10vh", "30vh", "0", "0", "0", "8vh"]}
+                  
+              <Flex >
+                <Image
+                  src={logo}
+                  display={['none', 'none', 'flex', 'flex']}
+                  height="400px"
+                  borderRadius="200px"
+                  paddingTop="30px"
+                  
+                ></Image>
+              </Flex>
+            </MotionFlex>
+            <Flex height={['50px']} alignSelf="center">
+              <MotionButton
+                paddingLeft="20px"
+                paddingTop={['10vh', '30vh', '0', '0', '0', '6.5vh']}
                 width="auto"
-                bg="none"
                 variant="unstyled"
-                _focus="none"
-                onClick={() => transition()}
+               _focus=""
+                whileHover={{ scale: 1.1 }}
               >
-                <FaChevronCircleDown size="9vw" color="#e9dfcc" />
-              </Button>
-           
-           
+                <Link
+                  to="aboutme"
+                  spy={true}
+                  smooth={true}
+                  offset={-60}
+                  duration={500}
+                >
+                  <FaChevronCircleDown size="9vw" color="#e9dfcc" />
+                </Link>
+              </MotionButton>
             </Flex>
           </Flex>
         </Center>
